@@ -1,4 +1,5 @@
 pub mod html_to_urls;
+pub mod indexer_maker;
 
 trait SplitToString{
     fn split_to_string(&self, p: impl Into<String>) -> Vec<String>;

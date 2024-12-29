@@ -112,7 +112,7 @@ impl Tree {
         }
     }
 
-    fn flatten<'a>(&'a self, mut nodes: impl AsMut<Vec<&'a Tree>>) {
+    pub fn flatten<'a>(&'a self, mut nodes: impl AsMut<Vec<&'a Tree>>) {
         let nodes = nodes.as_mut();
 
         nodes.push(self);
@@ -134,6 +134,7 @@ impl Serialize for Tree {
         state.serialize_field("url", &self.url.as_str()).unwrap();
         state.serialize_field("subtree", &self.subtree).unwrap();
         state.serialize_field("depth", &self.depth).unwrap();
+        state.serialize_field("html", &self.html).unwrap();
 
         state.end()
     }
@@ -145,6 +146,9 @@ async fn test() {
         .await
         .unwrap();
 
+    std::fs::write("uhhhhhhhhh", format!("{:#?}", tree)).unwrap();
+
+
     let json = serde_json::to_string_pretty(&tree).unwrap();
 
     println!("{}", json);
@@ -152,6 +156,7 @@ async fn test() {
 
     let mut vec: Vec<&Tree> = Vec::new();
     tree.flatten(&mut vec);
+    std::fs::write("vec", format!("{:#?}", vec)).unwrap();
     let vec = Indexer::new(vec).await.unwrap();
 
     // let flat = serde_json::to_string(&vec).unwrap();
@@ -178,6 +183,16 @@ impl Html {
     }
 }
 
+#[tokio::test]
+async fn test2() {
+    let binding = Url::parse("https://askiiart.net/").unwrap();
+    let binding2 = Client::new();
+    let x = ListLinks::new(&binding, &binding2).await.unwrap();
+
+    println!("{:#?}", x)
+}
+
+#[derive(Debug)]
 pub struct ListLinks(pub Vec<Url>, pub String);
 impl ListLinks {
     pub async fn new(url: &Url, client: &Client) -> Result<Self, GenError> {

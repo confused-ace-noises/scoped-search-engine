@@ -1,0 +1,11 @@
+[package]
+name = "sort-results"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde = { workspace = true }
+serde_json = { workspace = true }
+url = { workspace = true }
+indexer = { path = "../indexer" }
+regex = "1.11.1"

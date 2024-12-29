@@ -1,0 +1,19 @@
+[package]
+name = "engine-backend"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sort-results = { path = "../sort-results" }
+regex = "1.11.1"
+url = { workspace = true }
+indexer = { path = "../indexer" }
+serde_json = { workspace = true }
+serde = { workspace = true }
+tokio = "*"
+
+[profile.test]
+opt-level = 3
+
+[profile.release]
+opt-level = 3

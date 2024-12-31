@@ -1,0 +1,375 @@
+core v0.1.0 (/home/arch/high_seas/scoped-search-engine/core)
+├── gloo v0.11.0
+│   ├── gloo-console v0.3.0
+│   │   ├── gloo-utils v0.2.0
+│   │   │   ├── js-sys v0.3.76
+│   │   │   │   ├── once_cell v1.20.2
+│   │   │   │   └── wasm-bindgen v0.2.99
+│   │   │   │       ├── cfg-if v1.0.0
+│   │   │   │       ├── once_cell v1.20.2
+│   │   │   │       ├── serde v1.0.217
+│   │   │   │       │   └── serde_derive v1.0.217 (proc-macro)
+│   │   │   │       │       ├── proc-macro2 v1.0.92
+│   │   │   │       │       │   └── unicode-ident v1.0.14
+│   │   │   │       │       ├── quote v1.0.38
+│   │   │   │       │       │   └── proc-macro2 v1.0.92 (*)
+│   │   │   │       │       └── syn v2.0.93
+│   │   │   │       │           ├── proc-macro2 v1.0.92 (*)
+│   │   │   │       │           ├── quote v1.0.38 (*)
+│   │   │   │       │           └── unicode-ident v1.0.14
+│   │   │   │       ├── serde_json v1.0.134
+│   │   │   │       │   ├── itoa v1.0.14
+│   │   │   │       │   ├── memchr v2.7.4
+│   │   │   │       │   ├── ryu v1.0.18
+│   │   │   │       │   └── serde v1.0.217 (*)
+│   │   │   │       └── wasm-bindgen-macro v0.2.99 (proc-macro)
+│   │   │   │           ├── quote v1.0.38 (*)
+│   │   │   │           └── wasm-bindgen-macro-support v0.2.99
+│   │   │   │               ├── proc-macro2 v1.0.92 (*)
+│   │   │   │               ├── quote v1.0.38 (*)
+│   │   │   │               ├── syn v2.0.93 (*)
+│   │   │   │               ├── wasm-bindgen-backend v0.2.99
+│   │   │   │               │   ├── bumpalo v3.16.0
+│   │   │   │               │   ├── log v0.4.22
+│   │   │   │               │   ├── proc-macro2 v1.0.92 (*)
+│   │   │   │               │   ├── quote v1.0.38 (*)
+│   │   │   │               │   ├── syn v2.0.93 (*)
+│   │   │   │               │   └── wasm-bindgen-shared v0.2.99
+│   │   │   │               └── wasm-bindgen-shared v0.2.99
+│   │   │   ├── serde v1.0.217 (*)
+│   │   │   ├── serde_json v1.0.134 (*)
+│   │   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   │   └── web-sys v0.3.76
+│   │   │       ├── js-sys v0.3.76 (*)
+│   │   │       └── wasm-bindgen v0.2.99 (*)
+│   │   ├── js-sys v0.3.76 (*)
+│   │   ├── serde v1.0.217 (*)
+│   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   └── web-sys v0.3.76 (*)
+│   ├── gloo-dialogs v0.2.0
+│   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   └── web-sys v0.3.76 (*)
+│   ├── gloo-events v0.2.0
+│   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   └── web-sys v0.3.76 (*)
+│   ├── gloo-file v0.3.0
+│   │   ├── futures-channel v0.3.31
+│   │   │   ├── futures-core v0.3.31
+│   │   │   └── futures-sink v0.3.31
+│   │   ├── gloo-events v0.2.0 (*)
+│   │   ├── js-sys v0.3.76 (*)
+│   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   └── web-sys v0.3.76 (*)
+│   ├── gloo-history v0.2.2
+│   │   ├── getrandom v0.2.15
+│   │   │   ├── cfg-if v1.0.0
+│   │   │   ├── js-sys v0.3.76 (*)
+│   │   │   └── wasm-bindgen v0.2.99 (*)
+│   │   ├── gloo-events v0.2.0 (*)
+│   │   ├── gloo-utils v0.2.0 (*)
+│   │   ├── serde v1.0.217 (*)
+│   │   ├── serde-wasm-bindgen v0.6.5
+│   │   │   ├── js-sys v0.3.76 (*)
+│   │   │   ├── serde v1.0.217 (*)
+│   │   │   └── wasm-bindgen v0.2.99 (*)
+│   │   ├── serde_urlencoded v0.7.1
+│   │   │   ├── form_urlencoded v1.2.1
+│   │   │   │   └── percent-encoding v2.3.1
+│   │   │   ├── itoa v1.0.14
+│   │   │   ├── ryu v1.0.18
+│   │   │   └── serde v1.0.217 (*)
+│   │   ├── thiserror v1.0.69
+│   │   │   └── thiserror-impl v1.0.69 (proc-macro)
+│   │   │       ├── proc-macro2 v1.0.92 (*)
+│   │   │       ├── quote v1.0.38 (*)
+│   │   │       └── syn v2.0.93 (*)
+│   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   └── web-sys v0.3.76 (*)
+│   ├── gloo-net v0.5.0
+│   │   ├── futures-channel v0.3.31 (*)
+│   │   ├── futures-core v0.3.31
+│   │   ├── futures-sink v0.3.31
+│   │   ├── gloo-utils v0.2.0 (*)
+│   │   ├── http v0.2.12
+│   │   │   ├── bytes v1.9.0
+│   │   │   ├── fnv v1.0.7
+│   │   │   └── itoa v1.0.14
+│   │   ├── js-sys v0.3.76 (*)
+│   │   ├── pin-project v1.1.7
+│   │   │   └── pin-project-internal v1.1.7 (proc-macro)
+│   │   │       ├── proc-macro2 v1.0.92 (*)
+│   │   │       ├── quote v1.0.38 (*)
+│   │   │       └── syn v2.0.93 (*)
+│   │   ├── serde v1.0.217 (*)
+│   │   ├── serde_json v1.0.134 (*)
+│   │   ├── thiserror v1.0.69 (*)
+│   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   ├── wasm-bindgen-futures v0.4.49
+│   │   │   ├── cfg-if v1.0.0
+│   │   │   ├── js-sys v0.3.76 (*)
+│   │   │   ├── once_cell v1.20.2
+│   │   │   └── wasm-bindgen v0.2.99 (*)
+│   │   └── web-sys v0.3.76 (*)
+│   ├── gloo-render v0.2.0
+│   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   └── web-sys v0.3.76 (*)
+│   ├── gloo-storage v0.3.0
+│   │   ├── gloo-utils v0.2.0 (*)
+│   │   ├── js-sys v0.3.76 (*)
+│   │   ├── serde v1.0.217 (*)
+│   │   ├── serde_json v1.0.134 (*)
+│   │   ├── thiserror v1.0.69 (*)
+│   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   └── web-sys v0.3.76 (*)
+│   ├── gloo-timers v0.3.0
+│   │   ├── futures-channel v0.3.31 (*)
+│   │   ├── futures-core v0.3.31
+│   │   ├── js-sys v0.3.76 (*)
+│   │   └── wasm-bindgen v0.2.99 (*)
+│   ├── gloo-utils v0.2.0 (*)
+│   └── gloo-worker v0.5.0
+│       ├── bincode v1.3.3
+│       │   └── serde v1.0.217 (*)
+│       ├── futures v0.3.31
+│       │   ├── futures-channel v0.3.31 (*)
+│       │   ├── futures-core v0.3.31
+│       │   ├── futures-io v0.3.31
+│       │   ├── futures-sink v0.3.31
+│       │   ├── futures-task v0.3.31
+│       │   └── futures-util v0.3.31
+│       │       ├── futures-channel v0.3.31 (*)
+│       │       ├── futures-core v0.3.31
+│       │       ├── futures-io v0.3.31
+│       │       ├── futures-macro v0.3.31 (proc-macro)
+│       │       │   ├── proc-macro2 v1.0.92 (*)
+│       │       │   ├── quote v1.0.38 (*)
+│       │       │   └── syn v2.0.93 (*)
+│       │       ├── futures-sink v0.3.31
+│       │       ├── futures-task v0.3.31
+│       │       ├── memchr v2.7.4
+│       │       ├── pin-project-lite v0.2.15
+│       │       ├── pin-utils v0.1.0
+│       │       └── slab v0.4.9
+│       │           [build-dependencies]
+│       │           └── autocfg v1.4.0
+│       ├── gloo-utils v0.2.0 (*)
+│       ├── gloo-worker-macros v0.1.0 (proc-macro)
+│       │   ├── proc-macro-crate v1.3.1
+│       │   │   ├── once_cell v1.20.2
+│       │   │   └── toml_edit v0.19.15
+│       │   │       ├── indexmap v2.7.0
+│       │   │       │   ├── equivalent v1.0.1
+│       │   │       │   └── hashbrown v0.15.2
+│       │   │       ├── toml_datetime v0.6.8
+│       │   │       └── winnow v0.5.40
+│       │   ├── proc-macro2 v1.0.92 (*)
+│       │   ├── quote v1.0.38 (*)
+│       │   └── syn v2.0.93 (*)
+│       ├── js-sys v0.3.76 (*)
+│       ├── pinned v0.1.0
+│       │   ├── futures v0.3.31 (*)
+│       │   ├── rustversion v1.0.19 (proc-macro)
+│       │   └── thiserror v1.0.69 (*)
+│       ├── serde v1.0.217 (*)
+│       ├── thiserror v1.0.69 (*)
+│       ├── wasm-bindgen v0.2.99 (*)
+│       ├── wasm-bindgen-futures v0.4.49 (*)
+│       └── web-sys v0.3.76 (*)
+├── reqwasm v0.5.0
+│   └── gloo-net v0.1.0
+│       ├── futures-channel v0.3.31 (*)
+│       ├── futures-core v0.3.31
+│       ├── futures-sink v0.3.31
+│       ├── gloo-utils v0.1.7
+│       │   ├── js-sys v0.3.76 (*)
+│       │   ├── serde v1.0.217 (*)
+│       │   ├── serde_json v1.0.134 (*)
+│       │   ├── wasm-bindgen v0.2.99 (*)
+│       │   └── web-sys v0.3.76 (*)
+│       ├── js-sys v0.3.76 (*)
+│       ├── pin-project v1.1.7 (*)
+│       ├── serde v1.0.217 (*)
+│       ├── serde_json v1.0.134 (*)
+│       ├── thiserror v1.0.69 (*)
+│       ├── wasm-bindgen v0.2.99 (*)
+│       ├── wasm-bindgen-futures v0.4.49 (*)
+│       └── web-sys v0.3.76 (*)
+├── serde v1.0.217 (*)
+├── serde_json v1.0.134 (*)
+├── web-sys v0.3.76 (*)
+├── yew v0.21.0
+│   ├── console_error_panic_hook v0.1.7
+│   │   ├── cfg-if v1.0.0
+│   │   └── wasm-bindgen v0.2.99 (*)
+│   ├── futures v0.3.31 (*)
+│   ├── gloo v0.10.0
+│   │   ├── gloo-console v0.3.0 (*)
+│   │   ├── gloo-dialogs v0.2.0 (*)
+│   │   ├── gloo-events v0.2.0 (*)
+│   │   ├── gloo-file v0.3.0 (*)
+│   │   ├── gloo-history v0.2.2 (*)
+│   │   ├── gloo-net v0.4.0
+│   │   │   ├── futures-channel v0.3.31 (*)
+│   │   │   ├── futures-core v0.3.31
+│   │   │   ├── futures-sink v0.3.31
+│   │   │   ├── gloo-utils v0.2.0 (*)
+│   │   │   ├── http v0.2.12 (*)
+│   │   │   ├── js-sys v0.3.76 (*)
+│   │   │   ├── pin-project v1.1.7 (*)
+│   │   │   ├── serde v1.0.217 (*)
+│   │   │   ├── serde_json v1.0.134 (*)
+│   │   │   ├── thiserror v1.0.69 (*)
+│   │   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   │   ├── wasm-bindgen-futures v0.4.49 (*)
+│   │   │   └── web-sys v0.3.76 (*)
+│   │   ├── gloo-render v0.2.0 (*)
+│   │   ├── gloo-storage v0.3.0 (*)
+│   │   ├── gloo-timers v0.3.0 (*)
+│   │   ├── gloo-utils v0.2.0 (*)
+│   │   └── gloo-worker v0.4.0
+│   │       ├── bincode v1.3.3 (*)
+│   │       ├── futures v0.3.31 (*)
+│   │       ├── gloo-utils v0.2.0 (*)
+│   │       ├── gloo-worker-macros v0.1.0 (proc-macro) (*)
+│   │       ├── js-sys v0.3.76 (*)
+│   │       ├── pinned v0.1.0 (*)
+│   │       ├── serde v1.0.217 (*)
+│   │       ├── thiserror v1.0.69 (*)
+│   │       ├── wasm-bindgen v0.2.99 (*)
+│   │       ├── wasm-bindgen-futures v0.4.49 (*)
+│   │       └── web-sys v0.3.76 (*)
+│   ├── implicit-clone v0.4.9
+│   │   ├── implicit-clone-derive v0.1.1 (proc-macro)
+│   │   │   ├── quote v1.0.38 (*)
+│   │   │   └── syn v2.0.93 (*)
+│   │   └── indexmap v2.7.0
+│   │       ├── equivalent v1.0.1
+│   │       └── hashbrown v0.15.2
+│   ├── indexmap v2.7.0 (*)
+│   ├── js-sys v0.3.76 (*)
+│   ├── prokio v0.1.0
+│   │   ├── futures v0.3.31 (*)
+│   │   ├── gloo v0.8.1
+│   │   │   ├── gloo-console v0.2.3
+│   │   │   │   ├── gloo-utils v0.1.7 (*)
+│   │   │   │   ├── js-sys v0.3.76 (*)
+│   │   │   │   ├── serde v1.0.217 (*)
+│   │   │   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   │   │   └── web-sys v0.3.76 (*)
+│   │   │   ├── gloo-dialogs v0.1.1
+│   │   │   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   │   │   └── web-sys v0.3.76 (*)
+│   │   │   ├── gloo-events v0.1.2
+│   │   │   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   │   │   └── web-sys v0.3.76 (*)
+│   │   │   ├── gloo-file v0.2.3
+│   │   │   │   ├── gloo-events v0.1.2 (*)
+│   │   │   │   ├── js-sys v0.3.76 (*)
+│   │   │   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   │   │   └── web-sys v0.3.76 (*)
+│   │   │   ├── gloo-history v0.1.5
+│   │   │   │   ├── gloo-events v0.1.2 (*)
+│   │   │   │   ├── gloo-utils v0.1.7 (*)
+│   │   │   │   ├── serde v1.0.217 (*)
+│   │   │   │   ├── serde-wasm-bindgen v0.5.0
+│   │   │   │   │   ├── js-sys v0.3.76 (*)
+│   │   │   │   │   ├── serde v1.0.217 (*)
+│   │   │   │   │   └── wasm-bindgen v0.2.99 (*)
+│   │   │   │   ├── serde_urlencoded v0.7.1 (*)
+│   │   │   │   ├── thiserror v1.0.69 (*)
+│   │   │   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   │   │   └── web-sys v0.3.76 (*)
+│   │   │   ├── gloo-net v0.3.1
+│   │   │   │   ├── futures-channel v0.3.31 (*)
+│   │   │   │   ├── futures-core v0.3.31
+│   │   │   │   ├── futures-sink v0.3.31
+│   │   │   │   ├── gloo-utils v0.1.7 (*)
+│   │   │   │   ├── http v0.2.12 (*)
+│   │   │   │   ├── js-sys v0.3.76 (*)
+│   │   │   │   ├── pin-project v1.1.7 (*)
+│   │   │   │   ├── serde v1.0.217 (*)
+│   │   │   │   ├── serde_json v1.0.134 (*)
+│   │   │   │   ├── thiserror v1.0.69 (*)
+│   │   │   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   │   │   ├── wasm-bindgen-futures v0.4.49 (*)
+│   │   │   │   └── web-sys v0.3.76 (*)
+│   │   │   ├── gloo-render v0.1.1
+│   │   │   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   │   │   └── web-sys v0.3.76 (*)
+│   │   │   ├── gloo-storage v0.2.2
+│   │   │   │   ├── gloo-utils v0.1.7 (*)
+│   │   │   │   ├── js-sys v0.3.76 (*)
+│   │   │   │   ├── serde v1.0.217 (*)
+│   │   │   │   ├── serde_json v1.0.134 (*)
+│   │   │   │   ├── thiserror v1.0.69 (*)
+│   │   │   │   ├── wasm-bindgen v0.2.99 (*)
+│   │   │   │   └── web-sys v0.3.76 (*)
+│   │   │   ├── gloo-timers v0.2.6
+│   │   │   │   ├── js-sys v0.3.76 (*)
+│   │   │   │   └── wasm-bindgen v0.2.99 (*)
+│   │   │   ├── gloo-utils v0.1.7 (*)
+│   │   │   └── gloo-worker v0.2.1
+│   │   │       ├── anymap2 v0.13.0
+│   │   │       ├── bincode v1.3.3 (*)
+│   │   │       ├── gloo-console v0.2.3 (*)
+│   │   │       ├── gloo-utils v0.1.7 (*)
+│   │   │       ├── js-sys v0.3.76 (*)
+│   │   │       ├── serde v1.0.217 (*)
+│   │   │       ├── wasm-bindgen v0.2.99 (*)
+│   │   │       ├── wasm-bindgen-futures v0.4.49 (*)
+│   │   │       └── web-sys v0.3.76 (*)
+│   │   ├── pin-project v1.1.7 (*)
+│   │   ├── pinned v0.1.0 (*)
+│   │   └── wasm-bindgen-futures v0.4.49 (*)
+│   ├── rustversion v1.0.19 (proc-macro)
+│   ├── serde v1.0.217 (*)
+│   ├── slab v0.4.9 (*)
+│   ├── thiserror v1.0.69 (*)
+│   ├── tracing v0.1.41
+│   │   ├── pin-project-lite v0.2.15
+│   │   ├── tracing-attributes v0.1.28 (proc-macro)
+│   │   │   ├── proc-macro2 v1.0.92 (*)
+│   │   │   ├── quote v1.0.38 (*)
+│   │   │   └── syn v2.0.93 (*)
+│   │   └── tracing-core v0.1.33
+│   │       └── once_cell v1.20.2
+│   ├── wasm-bindgen v0.2.99 (*)
+│   ├── wasm-bindgen-futures v0.4.49 (*)
+│   ├── web-sys v0.3.76 (*)
+│   └── yew-macro v0.21.0 (proc-macro)
+│       ├── boolinator v2.4.0
+│       ├── once_cell v1.20.2
+│       ├── prettyplease v0.2.25
+│       │   ├── proc-macro2 v1.0.92 (*)
+│       │   └── syn v2.0.93 (*)
+│       ├── proc-macro-error v1.0.4
+│       │   ├── proc-macro-error-attr v1.0.4 (proc-macro)
+│       │   │   ├── proc-macro2 v1.0.92 (*)
+│       │   │   └── quote v1.0.38 (*)
+│       │   │   [build-dependencies]
+│       │   │   └── version_check v0.9.5
+│       │   ├── proc-macro2 v1.0.92 (*)
+│       │   ├── quote v1.0.38 (*)
+│       │   └── syn v1.0.109
+│       │       ├── proc-macro2 v1.0.92 (*)
+│       │       └── unicode-ident v1.0.14
+│       │   [build-dependencies]
+│       │   └── version_check v0.9.5
+│       ├── proc-macro2 v1.0.92 (*)
+│       ├── quote v1.0.38 (*)
+│       └── syn v2.0.93 (*)
+└── yew-router v0.18.0
+    ├── gloo v0.10.0 (*)
+    ├── js-sys v0.3.76 (*)
+    ├── route-recognizer v0.3.1
+    ├── serde v1.0.217 (*)
+    ├── serde_urlencoded v0.7.1 (*)
+    ├── tracing v0.1.41 (*)
+    ├── urlencoding v2.1.3
+    ├── wasm-bindgen v0.2.99 (*)
+    ├── web-sys v0.3.76 (*)
+    ├── yew v0.21.0 (*)
+    └── yew-router-macro v0.18.0 (proc-macro)
+        ├── proc-macro2 v1.0.92 (*)
+        ├── quote v1.0.38 (*)
+        └── syn v2.0.93 (*)

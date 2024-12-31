@@ -1,8 +1,7 @@
 use indexer::indexer_maker::Indexer;
 use regex::{self, Regex};
 use serde::{
-    de::{self, value, MapAccess, Visitor},
-    Deserialize, Deserializer,
+    de::{self, value, MapAccess, Visitor}, ser::SerializeMap, Deserialize, Deserializer, Serialize
 };
 use std::{
     cmp::Ordering,
@@ -113,7 +112,7 @@ impl Matches {
     pub fn to_page(self) -> Page {
         Page {
             url: self.url,
-            html: self.html,
+            score: self.score,
         }
     }
 }
@@ -171,7 +170,19 @@ fn update_values(vec1: Vec<Matches>, vec2: &Vec<UserModifier>) -> Vec<Matches> {
 #[derive(Debug)]
 pub struct Page {
     pub url: Url,
-    pub html: String,
+    pub score: f64
+}
+
+impl Serialize for Page {
+    fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
+    where
+        S: serde::Serializer 
+    {
+        let mut state = serializer.serialize_map(Some(2))?;
+        state.serialize_entry("url", &self.url.to_string()).unwrap();
+        state.serialize_entry("score", &self.score).unwrap();
+        state.end()
+    }
 }
 
 pub trait Sorter {

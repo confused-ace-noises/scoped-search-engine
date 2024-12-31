@@ -9,3 +9,4 @@ serde_json = { workspace = true }
 url = { workspace = true }
 indexer = { path = "../indexer" }
 regex = "1.11.1"
+actix-web = "4.9.0"

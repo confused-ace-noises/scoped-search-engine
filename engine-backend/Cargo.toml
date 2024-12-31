@@ -11,6 +11,9 @@ indexer = { path = "../indexer" }
 serde_json = { workspace = true }
 serde = { workspace = true }
 tokio = "*"
+rocket = { version = "0.5.1", features = ["json"] }
+rocket_cors = "0.6.0"
+# gloo = "0.11.0"
 
 [profile.test]
 opt-level = 3

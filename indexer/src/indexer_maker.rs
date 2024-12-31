@@ -1,6 +1,6 @@
 use crate::html_to_urls::Tree;
 use serde::{
-    de::{self, MapAccess, Visitor}, ser::SerializeMap, Deserialize, Deserializer, Serialize, Serializer
+    de::{self, MapAccess, Visitor}, ser::{SerializeMap, SerializeSeq}, Deserialize, Deserializer, Serialize, Serializer
 };
 use serde_json::{json, Value};
 use std::{
@@ -95,17 +95,17 @@ impl Serialize for Indexer {
     where
         S: serde::Serializer,
     {
-        let mut map = serializer.serialize_map(Some(2))?;
+        let mut map = serializer.serialize_seq(Some(self.0.len()))?;
 
-        let mut max_depth = 0;
+        // let mut max_depth = 0;
 
         let data: Vec<_> = self
             .0
             .iter()
             .map(|(url, (first, second, html))| {
-                if *first > max_depth {
-                    max_depth = *first
-                }
+                // if *first > max_depth {
+                //     max_depth = *first
+                // }
                 let url = url.to_string();
                 serde_json::json!({
                     "url": url,
@@ -116,15 +116,16 @@ impl Serialize for Indexer {
             })
             .collect();
 
-        let meta = serde_json::json!(
-            {"depth": max_depth}
-        );
+        // let meta = serde_json::json!(
+        //     {"depth": max_depth}
+        // );
 
-        map.serialize_entry("data", &data)?;
-        map.serialize_entry("meta", &meta)?;
+        map.serialize_element(&data)?;
+        // map.serialize_entry("meta", &meta)?;
         map.end()
     }
 }
+
 
 // impl Serialize for Indexer {
 //     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>

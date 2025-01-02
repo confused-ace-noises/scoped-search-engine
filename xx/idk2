@@ -1,0 +1,130 @@
+{
+  "https://www.youtube.com/watch?v=IVpOyKCNZYw": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://invidious.askiiart.net/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://composerize.askiiart.net/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://git.askiiart.net/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://status.askiiart.net/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://til.simonwillison.net/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://element.askiiart.net/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/til/using-json-with-docker-compose.html": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://codeberg.org/TCCD-CompSci-and-Coding-Club/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://nitter.askiiart.net/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/blog/marlin-boot-animations.html": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://libreddit.askiiart.net/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://github.com/askiiart": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/blog/foooooonts.html": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/index.md": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/blog/new-pgp-key.html": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/repos/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://discord.com/users/552658564368302092": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://github.com/askiiart/askiiart.github.io": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/blog/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/til/akkoma-in-docker.html": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://bibliogram.askiiart.net/applysettings/3bb4944d6d346268ae9bd84f42bc9a51": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/til/": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/til/using-json-with-docker-compose.md": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://git.askiiart.net/askiiart/askiiart-net": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://git.askiiart.net/askiiart": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "monero:8B7KKtrTLVuAva39qEfb6acvocX7gN1DANkaatSutDPZ7ySpCoVn8jndZcFUQyhnLAD8MjuNv983w7ZG79oZv8KBCFEo69w&tx_description=donation_from_site": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/pubkey.asc": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://github.com/jbranchaud/til": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/blog/300.html": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://codeberg.org/askiiart": {
+    "depth": 1,
+    "frequency": 1
+  },
+  "https://askiiart.net/feed.xml": {
+    "depth": 1,
+    "frequency": 1
+  }
+}

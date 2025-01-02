@@ -13,3 +13,5 @@ reqwest = "0.12.11"
 select = "0.6.0"
 regex = "1.11.1"
 rayon = "1.10.0"
+tokio = "1.42.0"
+xxhash-rust = { version = "0.8.15", features = ["xxh3"]}

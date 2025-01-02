@@ -1,4 +1,3 @@
-use rocket::figment::util::vec_tuple_map::deserialize;
 use rocket::{post, serde::json::Json};
 use rocket::form::Form;
 use indexer::{html_to_urls::Tree, indexer_maker::Indexer};
@@ -6,7 +5,7 @@ use regex::{self, Regex};
 use serde::de::{self, MapAccess, Visitor};
 use serde::ser::SerializeMap;
 use serde::{self, Deserialize, Deserializer, Serialize};
-use serde_json::{self, json};
+use serde_json::{self, json, Value};
 use sort_results::matches::{Matches, Page, Sorter};
 use sort_results::{Pages, UserMod, UserModifier, UserParams};
 use std::collections::HashMap;
@@ -15,9 +14,45 @@ use std::{error::Error, ops::Index, slice::SliceIndex};
 use tokio;
 use url::{self, Url};
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Serialize)]
 pub struct MetaData {
     max_depth: usize,
+} impl<'de> Deserialize<'de> for MetaData {
+    fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
+    where
+        D: Deserializer<'de> 
+    {
+        pub struct MetaDataVisitor;
+        impl<'de> Visitor<'de> for MetaDataVisitor {
+            type Value = MetaData;
+        
+            fn expecting(&self, formatter: &mut fmt::Formatter) -> fmt::Result {
+                formatter.write_str("idkkkkk")
+            }
+
+            fn visit_map<A>(self, mut map: A) -> Result<Self::Value, A::Error>
+            where
+                A: MapAccess<'de>, 
+            {
+
+                let mut max_depth: u64 = 0;
+
+                while let Some(inner) = map.next_key::<String>()? {
+                    match inner.as_str() {
+                        "max_depth" => {
+                            let value: Value = map.next_value()?;
+                            let val = value.get("max_depth").unwrap();
+                            max_depth = val.as_u64().unwrap();
+                        } 
+                        _ => panic!()
+                    }
+                }        
+                Ok(MetaData { max_depth: max_depth as usize })    
+            }
+        }
+
+        deserializer.deserialize_map(MetaDataVisitor)
+    }
 }
 
 #[derive(Debug)]
@@ -126,7 +161,7 @@ impl<'de> Deserialize<'de> for Data {
                 M: MapAccess<'de>,
             {
                 let mut data = None;
-                let mut meta = None;
+                let mut meta: Option<u64> = None;
 
                 while let Some(key) = map.next_key::<String>()? {
                     match key.as_str() {
@@ -154,7 +189,7 @@ impl<'de> Deserialize<'de> for Data {
 
                             data = Some(Indexer(indexer_data.into_iter().map(|x| (Url::parse(&x.0).unwrap(), (x.1.0, x.1.1, x.1.2))).collect::<HashMap<_, _>>()));
                         }
-                        "meta" => {
+                        "max_depth" => {
                             meta = Some(map.next_value()?);
                         }
                         _ => return Err(de::Error::unknown_field(&key, &["data", "meta"])),
@@ -164,7 +199,7 @@ impl<'de> Deserialize<'de> for Data {
                 let data = data.ok_or_else(|| de::Error::missing_field("data"))?;
                 let meta = meta.ok_or_else(|| de::Error::missing_field("meta"))?;
 
-                Ok(Data { data, meta })
+                Ok(Data { data, meta: MetaData { max_depth: meta as usize} })
             }
         }
 
@@ -216,9 +251,7 @@ fn test1() {
                 }
             ],
 
-            "meta": {
-                "max_depth": 1
-            }
+            "max_depth": 1
         }
     "#;
 
@@ -231,7 +264,7 @@ fn test1() {
 #[post("/api/search_any", format = "application/json", data = "<query>")]
 pub async fn search_any(query: String) -> Json<Pages> {
     
-    println!("{}", query);
+    println!("query_raw = {}", query);
 
     let query: SearchQuery = serde_json::from_str(&query).unwrap();
 

@@ -1,4 +1,4 @@
-use crate::{eval::Page, utils::searcher::Searcher, Error};
+use crate::{main_logic::eval::{Page, ScorePage}, utils::searcher::Searcher, Error};
 
 #[derive(Debug, Clone, Copy)]
 pub enum UserModType {
@@ -9,10 +9,10 @@ pub enum UserModType {
 
 pub struct UserModifiers {
     pub modification_type: UserModType,
-    searcher: Searcher,
+    pub searcher: Searcher,
 }
 impl UserModifiers {
-    pub fn modify_page_score(&self, mut page: Page) -> Page {
+    pub fn modify_page_score(&self, mut page: ScorePage) -> ScorePage {
         if self.searcher.search(page.url.as_str()) != 0
             || self.searcher.search(page.title.clone()) != 0
         {
@@ -56,6 +56,15 @@ impl UserParameters {
         depth as f64 * self.depth_coefficient
             + frequency as f64 * self.mention_frequency_coefficient
             + n_matches as f64 * self.n_matches_coefficient
+    }
+
+    pub fn calculate_score_no_freq(&self, depth: usize, n_matches: usize) -> f64 {
+        depth as f64 * self.depth_coefficient
+            + n_matches as f64 * self.n_matches_coefficient
+    }
+
+    pub fn calculate_score_freq(&self, current_score: f64, frequency: usize) -> f64 {
+        current_score + frequency as f64 * self.mention_frequency_coefficient
     }
 }
 

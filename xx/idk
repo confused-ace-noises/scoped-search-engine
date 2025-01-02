@@ -1,0 +1,642 @@
+FlatTree(
+    {
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "www.youtube.com",
+                    ),
+                ),
+                port: None,
+                path: "/watch",
+                query: Some(
+                    "v=IVpOyKCNZYw",
+                ),
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "invidious.askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "composerize.askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "git.askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "status.askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "til.simonwillison.net",
+                    ),
+                ),
+                port: None,
+                path: "/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "element.askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/til/using-json-with-docker-compose.html",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "codeberg.org",
+                    ),
+                ),
+                port: None,
+                path: "/TCCD-CompSci-and-Coding-Club/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "nitter.askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/blog/marlin-boot-animations.html",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "libreddit.askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "github.com",
+                    ),
+                ),
+                port: None,
+                path: "/askiiart",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/blog/foooooonts.html",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/index.md",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/blog/new-pgp-key.html",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/repos/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "discord.com",
+                    ),
+                ),
+                port: None,
+                path: "/users/552658564368302092",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "github.com",
+                    ),
+                ),
+                port: None,
+                path: "/askiiart/askiiart.github.io",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/blog/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/til/akkoma-in-docker.html",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "bibliogram.askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/applysettings/3bb4944d6d346268ae9bd84f42bc9a51",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/til/",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/til/using-json-with-docker-compose.md",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "git.askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/askiiart/askiiart-net",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "git.askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/askiiart",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "monero",
+                cannot_be_a_base: true,
+                username: "",
+                password: None,
+                host: None,
+                port: None,
+                path: "8B7KKtrTLVuAva39qEfb6acvocX7gN1DANkaatSutDPZ7ySpCoVn8jndZcFUQyhnLAD8MjuNv983w7ZG79oZv8KBCFEo69w&tx_description=donation_from_site",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/pubkey.asc",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "github.com",
+                    ),
+                ),
+                port: None,
+                path: "/jbranchaud/til",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/blog/300.html",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "codeberg.org",
+                    ),
+                ),
+                port: None,
+                path: "/askiiart",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+        W(
+            Url {
+                scheme: "https",
+                cannot_be_a_base: false,
+                username: "",
+                password: None,
+                host: Some(
+                    Domain(
+                        "askiiart.net",
+                    ),
+                ),
+                port: None,
+                path: "/feed.xml",
+                query: None,
+                fragment: None,
+            },
+        ): PageDescriptor {
+            depth: 1,
+            frequency: 1,
+        },
+    },
+)

@@ -21,4 +21,7 @@ pub enum Error {
 
     #[error(transparent)]
     Regex(#[from] regex::Error),
+
+    #[error(transparent)]
+    SerdeError(#[from] serde_json::Error)
 }

@@ -1,3 +1,4 @@
+use crate::server::reply::ReplyPage;
 use crate::utils::misc::{SplitToString, Occurrence};
 use crate::{
     main_logic::user_options::{Query, UserModType, UserModifiers, UserOptions},
@@ -8,13 +9,16 @@ use rayon::{
     iter::{IntoParallelIterator, IntoParallelRefIterator, ParallelIterator},
 };
 use reqwest::{self, Client};
+use rocket::time::Duration;
 use select::{
     document::Document,
     predicate::{Class, Name},
 };
+use serde::{Deserialize, Serialize};
+use tokio::time::timeout;
 use url::Url;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ScorePage {
     pub(crate) url: W<Url>,
     pub(crate) title: String,
@@ -29,6 +33,14 @@ impl ScorePage {
     pub fn to_page(&self) -> Page {
         Page { url: self.url.clone(), title: self.title.clone() }
     }
+
+    pub fn to_reply_page(&self) -> ReplyPage {
+        ReplyPage {
+            url: self.url.to_string(),
+            title: self.title.clone(),
+            score: self.score
+        }
+    }
 }
 
 pub struct Page {
@@ -37,7 +49,7 @@ pub struct Page {
 }
 
 pub struct Html {
-    url: W<Url>,
+    pub url: W<Url>,
     html: String,
     depth: usize,
 }
@@ -61,7 +73,9 @@ impl Html {
         depth: usize,
     ) -> Result<Html, Error> {
         let url1 = Url::parse(url.as_ref())?;
-        let response = client.get(url.as_ref()).send().await?;
+        let timeout_duration = std::time::Duration::from_secs(10);
+
+        let response = client.get(url.as_ref()).timeout(timeout_duration).send().await?;
         let text = response.text().await?;
 
         Ok(Html {

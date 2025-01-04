@@ -1,12 +1,15 @@
+use serde::{Deserialize, Serialize};
+
 use crate::{main_logic::eval::{Page, ScorePage}, utils::searcher::Searcher, Error};
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
 pub enum UserModType {
     Boost(f64),
     Penalize(f64),
     Ban,
 }
 
+#[derive(Debug, Clone)]
 pub struct UserModifiers {
     pub modification_type: UserModType,
     pub searcher: Searcher,
@@ -34,6 +37,7 @@ impl UserModifiers {
     }
 }
 
+#[derive(Debug, Clone, Deserialize)]
 pub struct UserParameters {
     depth_coefficient: f64,
     mention_frequency_coefficient: f64,
@@ -68,6 +72,7 @@ impl UserParameters {
     }
 }
 
+#[derive(Debug, Clone, Deserialize)]
 pub struct UserOptions {
     pub parameters: UserParameters,
     pub modifiers: Vec<UserModifiers>,
@@ -81,9 +86,11 @@ impl UserOptions {
     }
 }
 
+#[derive(Debug, Clone)]
 pub enum Query {
     Regex(Vec<String>),
-    String(String),
+    InsensitiveString(String),
+    SensitiveString(String),
 }
 impl Query {
     pub fn to_searchers(&self) -> Result<Vec<Searcher>, Error> {
@@ -102,10 +109,17 @@ impl Query {
                 }
             }
             // splits at ascii whitespace and returns the searchers with one word
-            Query::String(query_string) => Ok(query_string
+            Query::SensitiveString(query_string) => Ok(query_string
                 .split_ascii_whitespace()
-                .map(|string| Searcher::from_string(string))
+                .map(|string| Searcher::from_string(string, true))
                 .collect()),
+
+            Query::InsensitiveString(query_string) => Ok(
+                query_string.to_ascii_lowercase()
+                .split_ascii_whitespace()
+                .map(|string| Searcher::from_string(string, false))
+                .collect()
+            )
         }
     }
 }

@@ -5,10 +5,11 @@ use crate::{
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 use std::{
-    collections::{hash_map, HashMap}, ops::{Deref, DerefMut}, sync::Arc, time::Duration
+    collections::{hash_map, HashMap}, io::Lines, ops::{Deref, DerefMut}, sync::Arc, thread::sleep, time::Duration
 };
 use url::Url;
 use tokio;
+use futures::future::join_all;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 /// ## WARNING
@@ -22,9 +23,12 @@ pub struct Tree {
 
 impl Tree {
     pub async fn new(starting_url: String, depth_to_reach: usize) -> Result<Tree, Error> {
+        println!("start");
+        
         let client = Client::builder()
-                    .pool_idle_timeout(Duration::from_secs(90)) // Keep connections alive
-                    .pool_max_idle_per_host(10) // Max idle connections per host
+                    // .pool_idle_timeout(Duration::from_secs(90)) // Keep connections alive
+                    // .pool_max_idle_per_host(10) // Max idle connections per host
+                    //.user_agent("icepick-crawler")
                     .build()?;
 
         Self::new_recursive(Arc::new(client), W(Url::parse(&starting_url)?), 0, depth_to_reach, true).await
@@ -37,30 +41,25 @@ impl Tree {
         depth_to_reach: usize,
         first_recursion: bool
     ) -> Result<Tree, Error> {
-        std::fs::write("testing", url.to_string()).unwrap();
+        println!("{}", url.as_str());
+        let delay_duration = Duration::from_millis(250);
+        std::thread::sleep(delay_duration);
+        // tokio::time::sleep(delay_duration);
+        // std::fs::write("testing", url.to_string()).unwrap();
+        // tokio::fs::write("testing", url.to_string()).await.unwrap();
         match first_recursion {
             true => {
                 let depth = 0; // because it's the starting point
                 let html = Html::new_client(&url, &client, depth).await?;
-                let mut vec_result = Vec::new();
                 let links = html.get_links()?;
                 let title = html.title();
                 drop(html);
+                
+                let tasks = links.into_iter().map(|link| {
+                    Self::new_recursive(client.clone(), link, depth+1, depth_to_reach, false)
+                });
 
-                // let to_be_father_url = Arc::new(url);
-
-                for link in links {
-                    vec_result.push(
-                        Box::pin(Self::new_recursive(
-                            client.clone(),
-                            link,
-                            depth+1,
-                            depth_to_reach,
-                            false
-                        ))
-                        .await?,
-                    )
-                }
+                let vec_result = join_all(tasks).await.into_iter().filter(|page| page.is_ok()).map(|page| page.unwrap()).collect::<Vec<_>>();
 
                 Ok(Tree {
                     url,
@@ -69,8 +68,11 @@ impl Tree {
                     subtree: Some(vec_result),
                 })
             }
+        
             false => {
                 // let depth = father_depth + 1;
+
+                
 
                 if depth >= depth_to_reach {
                     //base case
@@ -91,23 +93,28 @@ impl Tree {
                     // middle case
                     let html = Html::new_client(&url, client.as_ref(), depth).await;
                     if let Ok(inner) = html {
-                        let mut tree_vec = Vec::new();
                         let links = inner.get_links()?;
                         let title = inner.title();
                         drop(inner);
-                        for link in links {
-                            tree_vec.push(Box::pin(
-                                Self::new_recursive(
-                                    Arc::clone(&client),
-                                    link,
-                                    depth+1,
-                                    depth_to_reach,
-                                    false,
-                                )).await?,
-                            );
-                        }
+                        
+                        let tasks = links.into_iter().map(|link| {
+                            Self::new_recursive(
+                                Arc::clone(&client),
+                                link,
+                                depth+1,
+                                depth_to_reach,
+                                false,
+                            )
+                        });
 
-
+                        let tree_vec = join_all(tasks).await.into_iter().filter_map(|item| {
+                            if item.is_ok() {
+                                Some(item.unwrap())
+                            } else {
+                                None
+                            }
+                        }).collect::<Vec<_>>();
+                        
                         return Ok(Tree {
                             title,
                             url,
@@ -131,61 +138,39 @@ impl Tree {
             subtree: None,
         }
     }
+
+    pub fn remove_too_deep(&self, max_depth: usize) -> Option<Tree> {
+        if self.depth > max_depth {
+            // Node exceeds max_depth, skip it entirely
+            return None;
+        }
+
+        // Recursively process subtree if it exists
+        let shallow_subtree = self.subtree.as_ref().map(|children| {
+            children
+                .iter()
+                .filter_map(|child| child.remove_too_deep(max_depth)) // Filter valid children
+                .collect::<Vec<_>>() // Collect into a Vec<Tree>
+        });
+
+        // Return a new Tree with the filtered subtree
+        Some(Tree {
+            url: self.url.clone(),
+            title: self.title.clone(),
+            subtree: shallow_subtree,
+            depth: self.depth,
+        })
+    }
 }
 
-// pub struct Tree {
-//     pub page: Page,
-//     pub depth: usize,
-//     pub father: Option<(Arc<W<Url>>, usize)>, // url, depth
-//     // pub score: f64,
-//     pub subtree: Option<Vec<Tree>>,
-// }
+#[test]
+fn test2() {
+    let tree: Tree = serde_json::from_str(&std::fs::read_to_string("test1").unwrap()).unwrap();
 
-// impl Serialize for Tree {
-//     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
-//     where
-//         S: serde::Serializer 
-//     {
-//         let mut state = serializer.serialize_map(Some(4))?;
-
-//         state.serialize_entry("url", &self.url)?;
-//         state.serialize_entry("title", &self.title)?;
-//         state.serialize_entry("subtree", &self.subtree)?;
-//         state.serialize_entry("depth", &self.depth)?;
-
-//         state.end()
-//     }
-// }
-
-// impl<'de> Deserialize<'de> for Tree {
-//     fn deserialize<D>(deserializer: D) -> Result<Self, D::Error>
-//     where
-//         D: serde::Deserializer<'de> 
-//     {
-//         pub struct TreeVisitor;
-
-//         impl<'de> Visitor<'de> for TreeVisitor {
-//             type Value = Tree;
-        
-//             fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
-//                 formatter.write_str("expected a nested tree of urls, depths and titles")
-//             }
-
-//             fn visit_map<A>(self, map: A) -> Result<Self::Value, A::Error>
-//             where
-//                 A: serde::de::MapAccess<'de>, 
-//             {
-//                 while let Some(inner) = map.next_key()? {
-                    
-//                 }
-
-//                 todo!()
-//             }
-//         }
-
-//         todo!()
-//     }
-// }
+    let new_tree = tree.remove_too_deep(1).unwrap();
+    let json = serde_json::to_string_pretty(&new_tree).unwrap();
+    std::fs::write("less_depth", json).unwrap();
+}
 
 #[tokio::test]
 async fn xxx() {
@@ -227,6 +212,8 @@ impl FlatTree {
     pub fn new(tree: &Tree) -> Self {
         let mut hashmap: HashMap<W<Url>, PageDescriptor> = HashMap::new();
 
+        hashmap.insert(tree.url.clone(), PageDescriptor { depth: tree.depth, frequency: 1 });
+
         let vec = Self::recursive_eval(tree);
         for element in vec {
             if hashmap.contains_key(&element.0) {
@@ -259,6 +246,16 @@ impl FlatTree {
 
     pub fn iter(&self) -> hash_map::Iter<'_, W<Url>, PageDescriptor> {
         self.0.iter()
+    }
+
+    pub fn remove_too_deep(&self, max_depth: usize) -> FlatTree {
+        FlatTree(<HashMap<W<Url>, PageDescriptor> as Clone>::clone(&self).into_iter().filter(|member| member.1.depth <= max_depth).collect::<HashMap<_, _>>())
+    }
+}
+
+impl FromIterator<(W<Url>, PageDescriptor)> for FlatTree {
+    fn from_iter<T: IntoIterator<Item = (W<Url>, PageDescriptor)>>(iter: T) -> Self {
+        FlatTree(iter.into_iter().collect())
     }
 }
 

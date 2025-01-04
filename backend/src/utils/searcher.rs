@@ -3,12 +3,17 @@ use regex::Regex;
 
 #[derive(Debug, Clone)]
 pub enum Searcher {
-    String(String),
+    InsensitiveString(String),
+    SensitiveString(String),
     Regex(Regex),
 }
 impl Searcher {
-    pub fn from_string(string: impl Into<String>) -> Searcher {
-        Searcher::String(Into::<String>::into(string))
+    pub fn from_string(string: impl Into<String>, case_sensitive: bool) -> Searcher {
+        if case_sensitive {
+            Searcher::SensitiveString(Into::<String>::into(string))
+        } else {
+            Searcher::InsensitiveString(Into::<String>::into(string).to_lowercase())
+        }
     }
 
     pub fn from_regex(regex: impl Into<String>) -> Result<Searcher, Error> {
@@ -19,7 +24,8 @@ impl Searcher {
         let haystack = Into::<String>::into(haystack);
 
         match self {
-            Searcher::String(string) => haystack.matches(string).count(),
+            Searcher::InsensitiveString(string) => haystack.to_lowercase().matches(string).count(),
+            Searcher::SensitiveString(string) => haystack.matches(string).count(),
             Searcher::Regex(regex) => regex.captures_iter(&haystack).count(),
         }
     }
@@ -34,7 +40,8 @@ impl<S: Into<String> + Clone> Searchable for S {
         let haystack = Into::<String>::into(self.clone());
 
         let n_matches = match searcher {
-            Searcher::String(string) => haystack.matches(&string).count(),
+            Searcher::InsensitiveString(string) => haystack.to_lowercase().matches(&string).count(),
+            Searcher::SensitiveString(string) => haystack.matches(&string).count(),
             Searcher::Regex(regex) => regex.captures_iter(&haystack).count(),
         };
 

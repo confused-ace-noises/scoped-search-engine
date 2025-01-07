@@ -1,8 +1,8 @@
 [workspace]
-members = [ "backend", 
+members = [ "icepick-backend", "cli", 
     "core", "engine-backend",
     "indexer", 
-    "sort-results",
+    "sort-results", "webui",
 ]
 
 [workspace.dependencies]
